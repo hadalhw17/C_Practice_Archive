@@ -1,0 +1,135 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    float dR0,x0,y0,dR1,x1,y1,dR2,x2,y2,T0,T1,T2,RA,RB,RC,AB,BC,AC,xac,yac,yab,xab,ybc,xbc,DE,EF,DF,S,p,d,e,f;
+    scanf("%f%f%f%f%f%f%f%f%f", &x0,&y0,&dR0,&x1,&y1,&dR1,&x2,&y2,&dR2);
+    AB=sqrt(pow(x1-x0,2)+pow(y1-y0,2));
+    BC=sqrt(pow(x2-x1,2)+pow(y2-y1,2));
+    AC=sqrt(pow(x0-x2,2)+pow(y0-y2,2));
+    T0=AB/(dR0+dR1);
+    T1=BC/(dR1+dR2);
+    T2=AC/(dR0+dR2);
+    if(((dR0==dR1)&&(x0==x1)&&(y0==y1))||((dR1==dR2)&&(x1==x2)&&(y1==y2))||((dR0==dR2)&&(x0==x2)&&(y0==y2)))
+    {
+        printf("ERROR");
+    }
+    else
+    {
+        if((dR0>0)&&(dR1>0)&&(dR2>0))
+        {
+            if((T0<T1)&&(T0<T2))
+            {
+                RA = dR0*T0;
+                RB = dR1*T0;
+                if((AC - RA) != (BC - RB))
+                {
+                    printf("ERROR");
+                }
+                else
+                {
+                    RC=AC-RA;
+                    xac=(x0*RC+x2*RA)/(RA+RC);
+                    yac=(y0*RC+y2*RA)/(RA+RC);
+                    xab=(x0*RB+x1*RA)/(RA+RB);
+                    yab=(y0*RB+y1*RA)/(RA+RB);
+                    xbc=(x1*RC+x2*RB)/(RB+RC);
+                    ybc=(y1*RC+y2*RB)/(RB+RC);
+                    DE=sqrt(pow(xab-xac,2)+pow(yab-yac,2));
+                    EF=sqrt(pow(xbc-xab,2)+pow(ybc-yab,2));
+                    DF=sqrt(pow(xbc-xac,2)+pow(ybc-yac,2));
+                    d=DE+EF;
+                    e=DE+DF;
+                    f=DF+EF;
+                    if((DF<d)&&(EF<e)&&(DE<f))
+                    {
+                        p=(DE+EF+DF)/2;
+                        S=(sqrt(p*(p-DE)*(p-EF)*(p-DF)));
+                        printf("%f", S);
+                
+                    }
+                    else
+                    {
+                        printf("ERROR");
+                    }
+                }
+            }
+    
+            if((T2<T1)&&(T2<T0))
+            {
+                RC=dR2*T2;
+                RA=dR0*T2;
+                if((AB-RA)!=(BC-RC))
+                {
+                    printf("ERROR");
+                }
+                else
+                {
+                    RB=AB-RA;
+                    xac=(x0*RC+x2*RA)/(RA+RC);
+                    yac=(y0*RC+y2*RA)/(RA+RC);
+                    xab=(x0*RB+x1*RA)/(RA+RB);
+                    yab=(y0*RB+y1*RA)/(RA+RB);
+                    xbc=(x1*RC+x2*RB)/(RB+RC);
+                    ybc=(y1*RC+y2*RB)/(RB+RC);
+                    DE=sqrt(pow(xab-xac,2)+pow(yab-yac,2));
+                    EF=sqrt(pow(xbc-xab,2)+pow(ybc-yab,2));
+                    DF=sqrt(pow(xbc-xac,2)+pow(ybc-yac,2));;
+                    d=DE+EF;
+                    e=DE+DF;
+                    f=DF+EF;
+                    if((DF<d)&&(EF<e)&&(DE<f))
+                    {
+                        p=(DE+EF+DF)/2;
+                        S=(sqrt(p*(p-DE)*(p-EF)*(p-DF)));
+                        printf("%f", S);
+                    }
+                    else
+                    {
+                        printf("ERROR");
+                    }
+                }
+            }
+            if((T1<T0)&&(T1<T2))
+            {
+                RB=dR1*T1;
+                RC=dR2*T1;
+                if((AB-RB)!=(AC-RC))
+                {
+                    printf("ERROR");
+                }
+                else
+                {
+                    RA=AC-RC;
+                    xac=(x0*RC+x2*RA)/(RA+RC);
+                    yac=(y0*RC+y2*RA)/(RA+RC);
+                    xab=(x0*RB+x1*RA)/(RA+RB);
+                    yab=(y0*RB+y1*RA)/(RA+RB);
+                    xbc=(x1*RC+x2*RB)/(RB+RC);
+                    ybc=(y1*RC+y2*RB)/(RB+RC);
+                    DE=sqrt(pow(xab-xac,2)+pow(yab-yac,2));
+                    EF=sqrt(pow(xbc-xab,2)+pow(ybc-yab,2));
+                    DF=sqrt(pow(xbc-xac,2)+pow(ybc-yac,2));
+                    d=DE+EF;
+                    e=DE+DF;
+                    f=DF+EF;
+                    if((DF<d)&&(EF<e)&&(DE<f))
+                    {
+                        p=(DE+EF+DF)/2;
+                        S=(sqrt(p*(p-DE)*(p-EF)*(p-DF)));
+                        printf("%f", S);            
+                    }
+                    else
+                    {
+                        printf("ERROR");
+                    }
+                }
+            }
+        }
+        else
+        {
+            printf("ERROR");
+        }
+    }
+    return 0;
+}
